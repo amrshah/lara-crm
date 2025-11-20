@@ -120,124 +120,125 @@ jobs:
           
           echo "Image file standardization completed"
           
-      - name: Create NOTICE.third-party.txt
+            - name: Create NOTICE.third-party.txt
         run: |
           cat > NOTICE.third-party.txt << 'EOF'
-THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+          THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
 
-This software incorporates components from the following project:
+          This software incorporates components from the following project:
 
-================================================================================
-Krayin CRM
-================================================================================
-
-Copyright (c) Krayin
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-Source: https://github.com/krayin/laravel-crm
-License: MIT License
-
-================================================================================
-
-AlamiaConnect CRM is built upon Krayin CRM and includes modifications and
-enhancements by AlamiaSoft. The use of AlamiaConnect CRM is governed by the
-AlamiaSoft End User License Agreement (EULA), which can be found in the
-LICENSE file included with this software.
-EOF
+          ================================================================================
+          Krayin CRM
+          ================================================================================
+          
+          Copyright (c) Krayin
+          
+          Permission is hereby granted, free of charge, to any person obtaining a copy
+          of this software and associated documentation files (the "Software"), to deal
+          in the Software without restriction, including without limitation the rights
+          to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+          copies of the Software, and to permit persons to whom the Software is
+          furnished to do so, subject to the following conditions:
+          
+          The above copyright notice and this permission notice shall be included in all
+          copies or substantial portions of the Software.
+          
+          THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+          IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+          FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+          AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+          LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+          OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+          SOFTWARE.
+          
+          Source: https://github.com/krayin/laravel-crm
+          License: MIT License
+          
+          ================================================================================
+          
+          AlamiaConnect CRM is built upon Krayin CRM and includes modifications and
+          enhancements by AlamiaSoft. The use of AlamiaConnect CRM is governed by the
+          AlamiaSoft End User License Agreement (EULA), which can be found in the
+          LICENSE file included with this software.
+          EOF
           echo "NOTICE.third-party.txt created"
+
           
       - name: Create LICENSE (EULA)
         run: |
           cat > LICENSE << 'EOF'
-END USER LICENSE AGREEMENT (EULA)
-AlamiaConnect CRM
+          END USER LICENSE AGREEMENT (EULA)
+          AlamiaConnect CRM
 
-Copyright (c) 2025 AlamiaSoft
-All Rights Reserved.
+          Copyright (c) 2025 AlamiaSoft
+          All Rights Reserved.
 
-IMPORTANT - READ CAREFULLY: This End User License Agreement ("EULA") is a legal
-agreement between you (either an individual or a single entity, "Licensee") and
-AlamiaSoft ("Licensor") for the AlamiaConnect CRM software product, which
-includes computer software and may include associated media, printed materials,
-and online or electronic documentation ("Software").
+          IMPORTANT - READ CAREFULLY: This End User License Agreement ("EULA") is a legal
+          agreement between you (either an individual or a single entity, "Licensee") and
+          AlamiaSoft ("Licensor") for the AlamiaConnect CRM software product, which
+          includes computer software and may include associated media, printed materials,
+          and online or electronic documentation ("Software").
 
-BY INSTALLING, COPYING, OR OTHERWISE USING THE SOFTWARE, YOU AGREE TO BE BOUND
-BY THE TERMS OF THIS EULA. IF YOU DO NOT AGREE TO THE TERMS OF THIS EULA, DO
-NOT INSTALL OR USE THE SOFTWARE.
+          BY INSTALLING, COPYING, OR OTHERWISE USING THE SOFTWARE, YOU AGREE TO BE BOUND
+          BY THE TERMS OF THIS EULA. IF YOU DO NOT AGREE TO THE TERMS OF THIS EULA, DO
+          NOT INSTALL OR USE THE SOFTWARE.
 
-1. GRANT OF LICENSE
-   Subject to the terms and conditions of this EULA, Licensor grants Licensee
-   a non-exclusive, non-transferable license to use the Software for internal
-   business purposes only.
+          1. GRANT OF LICENSE
+            Subject to the terms and conditions of this EULA, Licensor grants Licensee
+            a non-exclusive, non-transferable license to use the Software for internal
+            business purposes only.
 
-2. RESTRICTIONS
-   Licensee shall NOT:
-   a) Distribute, sublicense, rent, lease, or lend the Software to third parties
-   b) Reverse engineer, decompile, or disassemble the Software
-   c) Remove or alter any proprietary notices, labels, or marks on the Software
-   d) Use the Software to provide services to third parties (SaaS)
-   e) Create derivative works based on the Software without written permission
-   f) Make the Software available on any network where it could be used by
-      multiple users at the same time, unless licensed to do so
+          2. RESTRICTIONS
+            Licensee shall NOT:
+            a) Distribute, sublicense, rent, lease, or lend the Software to third parties
+            b) Reverse engineer, decompile, or disassemble the Software
+            c) Remove or alter any proprietary notices, labels, or marks on the Software
+            d) Use the Software to provide services to third parties (SaaS)
+            e) Create derivative works based on the Software without written permission
+            f) Make the Software available on any network where it could be used by
+                multiple users at the same time, unless licensed to do so
 
-3. INTELLECTUAL PROPERTY
-   The Software is licensed, not sold. Licensor retains all rights, title, and
-   interest in and to the Software, including all intellectual property rights.
+          3. INTELLECTUAL PROPERTY
+            The Software is licensed, not sold. Licensor retains all rights, title, and
+            interest in and to the Software, including all intellectual property rights.
 
-4. OPEN SOURCE COMPONENTS
-   This Software incorporates Krayin CRM, which is licensed under the MIT License.
-   The MIT License terms for Krayin CRM can be found in the NOTICE.third-party.txt
-   file. This EULA governs the use of AlamiaConnect CRM as a whole, including all
-   modifications and enhancements made by AlamiaSoft.
+          4. OPEN SOURCE COMPONENTS
+            This Software incorporates Krayin CRM, which is licensed under the MIT License.
+            The MIT License terms for Krayin CRM can be found in the NOTICE.third-party.txt
+            file. This EULA governs the use of AlamiaConnect CRM as a whole, including all
+            modifications and enhancements made by AlamiaSoft.
 
-5. WARRANTY DISCLAIMER
-   THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS
-   OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+          5. WARRANTY DISCLAIMER
+            THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS
+            OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+            MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
 
-6. LIMITATION OF LIABILITY
-   IN NO EVENT SHALL LICENSOR BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT,
-   OR CONSEQUENTIAL DAMAGES WHATSOEVER ARISING OUT OF THE USE OF OR INABILITY
-   TO USE THE SOFTWARE.
+          6. LIMITATION OF LIABILITY
+            IN NO EVENT SHALL LICENSOR BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT,
+            OR CONSEQUENTIAL DAMAGES WHATSOEVER ARISING OUT OF THE USE OF OR INABILITY
+            TO USE THE SOFTWARE.
 
-7. TERMINATION
-   This EULA is effective until terminated. Licensor may terminate this EULA
-   immediately if Licensee fails to comply with any term or condition. Upon
-   termination, Licensee must destroy all copies of the Software.
+          7. TERMINATION
+            This EULA is effective until terminated. Licensor may terminate this EULA
+            immediately if Licensee fails to comply with any term or condition. Upon
+            termination, Licensee must destroy all copies of the Software.
 
-8. GOVERNING LAW
-   This EULA shall be governed by and construed in accordance with the laws of
-   the jurisdiction in which Licensor is established.
+          8. GOVERNING LAW
+            This EULA shall be governed by and construed in accordance with the laws of
+            the jurisdiction in which Licensor is established.
 
-9. ENTIRE AGREEMENT
-   This EULA constitutes the entire agreement between Licensee and Licensor
-   concerning the Software and supersedes all prior agreements and understandings.
+          9. ENTIRE AGREEMENT
+            This EULA constitutes the entire agreement between Licensee and Licensor
+            concerning the Software and supersedes all prior agreements and understandings.
 
-For questions regarding this EULA, please contact:
-AlamiaSoft
-Email: amr.shah@gmail.com
-Website: https://amrshah.github.io
+          For questions regarding this EULA, please contact:
+          AlamiaSoft
+          Email: amr.shah@gmail.com
+          Website: https://amrshah.github.io
 
-ACKNOWLEDGMENT: By installing or using this Software, you acknowledge that you
-have read this EULA, understand it, and agree to be bound by its terms.
-EOF
+          ACKNOWLEDGMENT: By installing or using this Software, you acknowledge that you
+          have read this EULA, understand it, and agree to be bound by its terms.
+          EOF
           echo "LICENSE (EULA) created"
           
       - name: Create ATTRIBUTION.md
