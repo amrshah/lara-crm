@@ -244,55 +244,55 @@ jobs:
       - name: Create ATTRIBUTION.md
         run: |
           cat > docs/ATTRIBUTION.md << 'EOF'
-# Attribution & Acknowledgments
+          # Attribution & Acknowledgments
 
-## Built on Krayin CRM
+          ## Built on Krayin CRM
 
-AlamiaConnect CRM is built upon [Krayin CRM](https://github.com/krayin/laravel-crm),
-an open-source CRM framework licensed under the MIT License.
+          AlamiaConnect CRM is built upon [Krayin CRM](https://github.com/krayin/laravel-crm),
+          an open-source CRM framework licensed under the MIT License.
 
-### Krayin CRM Details
+          ### Krayin CRM Details
 
-- **Project**: Krayin CRM
-- **Source**: https://github.com/krayin/laravel-crm
-- **License**: MIT License
-- **Copyright**: Krayin
+          - **Project**: Krayin CRM
+          - **Source**: https://github.com/krayin/laravel-crm
+          - **License**: MIT License
+          - **Copyright**: Krayin
 
-We are grateful to the Krayin team and community for creating and maintaining
-this excellent open-source CRM framework. AlamiaConnect CRM includes modifications,
-enhancements, and additional features developed by AlamiaSoft.
+          We are grateful to the Krayin team and community for creating and maintaining
+          this excellent open-source CRM framework. AlamiaConnect CRM includes modifications,
+          enhancements, and additional features developed by AlamiaSoft.
 
-### MIT License
+          ### MIT License
 
-The full text of the MIT License for Krayin CRM can be found in the
-`NOTICE.third-party.txt` file included with this software.
+          The full text of the MIT License for Krayin CRM can be found in the
+          `NOTICE.third-party.txt` file included with this software.
 
-### Our Modifications
+          ### Our Modifications
 
-AlamiaConnect CRM includes the following modifications and enhancements:
-- Custom branding and user interface improvements
-- Additional features specific to AlamiaSoft's requirements
-- Enhanced security and performance optimizations
-- Custom integrations and workflows
+          AlamiaConnect CRM includes the following modifications and enhancements:
+          - Custom branding and user interface improvements
+          - Additional features specific to AlamiaSoft's requirements
+          - Enhanced security and performance optimizations
+          - Custom integrations and workflows
 
-### License for AlamiaConnect CRM
+          ### License for AlamiaConnect CRM
 
-While Krayin CRM is licensed under the MIT License, AlamiaConnect CRM as a whole
-(including all modifications and enhancements) is proprietary software licensed
-under the AlamiaSoft End User License Agreement (EULA). Please refer to the
-LICENSE file for complete terms and conditions.
+          While Krayin CRM is licensed under the MIT License, AlamiaConnect CRM as a whole
+          (including all modifications and enhancements) is proprietary software licensed
+          under the AlamiaSoft End User License Agreement (EULA). Please refer to the
+          LICENSE file for complete terms and conditions.
 
----
+          ---
 
-For more information:
-- **AlamiaConnect CRM**: https://amrshah.github.io
-- **Contact**: amr.shah@gmail.com
-- **Company**: AlamiaSoft
-EOF
-          
-          # Create docs directory if it doesn't exist
-          mkdir -p docs
-          mv docs/ATTRIBUTION.md docs/ATTRIBUTION.md 2>/dev/null || true
+          For more information:
+          - **AlamiaConnect CRM**: https://amrshah.github.io
+          - **Contact**: amr.shah@gmail.com
+          - **Company**: AlamiaSoft
+          EOF
+                    
+                    # Create docs directory if it doesn't exist
+                    mkdir -p docs
+                    mv docs/ATTRIBUTION.md docs/ATTRIBUTION.md 2>/dev/null || true
           
           echo "ATTRIBUTION.md created"
           
@@ -302,21 +302,21 @@ EOF
           if [ -f "README.md" ]; then
             # Create temporary file with new content
             cat > README_TEMP.md << 'EOF'
-# AlamiaConnect CRM
+          # AlamiaConnect CRM
 
-A comprehensive Customer Relationship Management system built by AlamiaSoft.
+          A comprehensive Customer Relationship Management system built by AlamiaSoft.
 
-## Built on Krayin CRM
+          ## Built on Krayin CRM
 
-AlamiaConnect CRM is built upon [Krayin CRM](https://github.com/krayin/laravel-crm),
-an open-source CRM framework licensed under the MIT License. We extend our gratitude
-to the Krayin team for their excellent work.
+          AlamiaConnect CRM is built upon [Krayin CRM](https://github.com/krayin/laravel-crm),
+          an open-source CRM framework licensed under the MIT License. We extend our gratitude
+          to the Krayin team for their excellent work.
 
-See [ATTRIBUTION.md](docs/ATTRIBUTION.md) for complete attribution details.
+          See [ATTRIBUTION.md](docs/ATTRIBUTION.md) for complete attribution details.
 
----
+          ---
 
-EOF
+          EOF
             
             # Append existing README content (skip first line if it's a title)
             tail -n +2 README.md >> README_TEMP.md
