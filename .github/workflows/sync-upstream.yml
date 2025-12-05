@@ -2,184 +2,94 @@ name: Sync with Krayin Upstream
 
 on:
   schedule:
-    # Run every Monday at 9:00 AM UTC (weekly)
-    - cron: '0 9 * * 1'
-  workflow_dispatch:  # Allow manual trigger
+    - cron: '0 9 * * 1' # Every Monday at 9:00 AM UTC
+  workflow_dispatch: # Allow manual triggering
 
 jobs:
-  sync-upstream:
+  sync_upstream:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
-      - name: Checkout AlamiaConnect repository
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Configure Git
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+
       - name: Add Krayin upstream remote
         run: |
-          git remote add upstream https://github.com/krayin/laravel-crm.git || true
+          git remote add upstream https://github.com/krayin/laravel-crm.git
           git fetch upstream
-          
-      - name: Check for upstream changes
-        id: check_changes
+
+      - name: Check for new commits
+        id: check_commits
         run: |
-          # Get the latest commit from upstream main/master branch
-          UPSTREAM_BRANCH=$(git remote show upstream | grep 'HEAD branch' | cut -d' ' -f5)
-          echo "Upstream branch: $UPSTREAM_BRANCH"
+          # Get the current upstream head
+          UPSTREAM_HEAD=$(git rev-parse upstream/master)
           
-          # Fetch latest from upstream
-          git fetch upstream $UPSTREAM_BRANCH
-          
-          # Check if there are new commits
-          UPSTREAM_COMMIT=$(git rev-parse upstream/$UPSTREAM_BRANCH)
-          echo "upstream_commit=$UPSTREAM_COMMIT" >> $GITHUB_OUTPUT
-          
-          # Check if upstream-sync branch exists
-          if git show-ref --verify --quiet refs/heads/upstream-sync; then
-            git checkout upstream-sync
-            CURRENT_COMMIT=$(git rev-parse HEAD)
-            echo "current_commit=$CURRENT_COMMIT" >> $GITHUB_OUTPUT
-            
-            if [ "$UPSTREAM_COMMIT" = "$CURRENT_COMMIT" ]; then
-              echo "has_changes=false" >> $GITHUB_OUTPUT
-              echo "No new changes from upstream"
-            else
-              echo "has_changes=true" >> $GITHUB_OUTPUT
-              echo "New changes detected from upstream"
-            fi
+          # Check if we have this commit in our history
+          if git merge-base --is-ancestor $UPSTREAM_HEAD HEAD; then
+            echo "Already up to date with upstream."
+            echo "has_changes=false" >> $GITHUB_OUTPUT
           else
+            echo "New commits found in upstream."
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "First time sync - upstream-sync branch doesn't exist"
+
+            # Count commits behind
+            COMMIT_COUNT=$(git rev-list HEAD..upstream/master --count)
+            echo "commit_count=$COMMIT_COUNT" >> $GITHUB_OUTPUT
           fi
-          
-      - name: Create or update upstream-sync branch
-        if: steps.check_changes.outputs.has_changes == 'true'
+
+      - name: Create Sync Branch and PR
+        if: steps.check_commits.outputs.has_changes == 'true'
         run: |
-          # Determine upstream branch
-          UPSTREAM_BRANCH=$(git remote show upstream | grep 'HEAD branch' | cut -d' ' -f5)
+          BRANCH_NAME="upstream-sync-$(date +%Y%m%d)"
+          git checkout -b $BRANCH_NAME
           
-          # Create or checkout upstream-sync branch
-          if git show-ref --verify --quiet refs/heads/upstream-sync; then
-            git checkout upstream-sync
-          else
-            git checkout -b upstream-sync
-          fi
+          # Attempt to merge upstream/master
+          # We use --no-commit to allow us to check for conflicts if needed,
+          # but here we want to commit if successful or fail if conflict.
+          # Better approach for automation: try merge, if conflict, fail step but create PR anyway?
+          # Ideally we want a PR that merges upstream into our codebase.
           
-          # Attempt to merge upstream changes
-          echo "Attempting to merge upstream/$UPSTREAM_BRANCH into upstream-sync..."
-          
-          if git merge upstream/$UPSTREAM_BRANCH --no-edit; then
-            echo "merge_status=success" >> $GITHUB_OUTPUT
-            echo "✅ Merge successful - no conflicts"
-          else
-            echo "merge_status=conflict" >> $GITHUB_OUTPUT
-            echo "⚠️ Merge conflicts detected"
-            
-            # Abort the merge
+          git merge upstream/master --no-edit || {
+            echo "Merge conflict detected. Aborting merge."
             git merge --abort
-            
-            # Create a new branch from upstream for manual merging
-            git checkout -b upstream-sync-$(date +%Y%m%d)
-            git merge upstream/$UPSTREAM_BRANCH --no-edit || true
+            CONFLICT=true
+          }
+
+          if [ "$CONFLICT" == "true" ]; then
+             echo "Merge conflict prevented automatic merge. Creating a PR with upstream reference to facilitate manual merge."
+
+             # Create a branch pointing to upstream/master
+             CONFLICT_BRANCH="upstream-conflict-$(date +%Y%m%d)"
+             git checkout -b $CONFLICT_BRANCH upstream/master
+             git push origin $CONFLICT_BRANCH
+
+             gh pr create \
+              --title "⚠️ Sync Conflict: Manual Merge Required" \
+              --body "This PR points to the upstream Krayin CRM master branch. An automatic merge attempt failed due to conflicts. Please merge this branch manually into main." \
+              --base main \
+              --head $CONFLICT_BRANCH \
+              --label "upstream-sync-conflict"
+
+             exit 0
           fi
           
-      - name: Push upstream-sync branch
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-          git push origin $BRANCH_NAME --force
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
-        id: push_branch
-        
-      - name: Get commit comparison
-        if: steps.check_changes.outputs.has_changes == 'true'
-        id: get_commits
-        run: |
-          UPSTREAM_BRANCH=$(git remote show upstream | grep 'HEAD branch' | cut -d' ' -f5)
-          
-          # Get list of new commits
-          COMMITS=$(git log --oneline upstream/$UPSTREAM_BRANCH ^main | head -10)
-          echo "commits<<EOF" >> $GITHUB_OUTPUT
-          echo "$COMMITS" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          
-          # Count total commits
-          COMMIT_COUNT=$(git log --oneline upstream/$UPSTREAM_BRANCH ^main | wc -l)
-          echo "commit_count=$COMMIT_COUNT" >> $GITHUB_OUTPUT
-          
-      - name: Create Pull Request
-        if: steps.check_changes.outputs.has_changes == 'true'
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ steps.push_branch.outputs.branch_name }}
-          title: "⬆️ Sync with Krayin Upstream - ${{ steps.get_commits.outputs.commit_count }} new commits"
-          body: |
-            ## Upstream Sync from Krayin CRM
-            
-            This PR contains updates from the upstream Krayin CRM repository.
-            
-            ### 📊 Summary
-            - **New commits**: ${{ steps.get_commits.outputs.commit_count }}
-            - **Upstream commit**: `${{ steps.check_changes.outputs.upstream_commit }}`
-            - **Sync date**: ${{ github.event.repository.updated_at }}
-            
-            ### 📝 Recent Commits from Upstream
-            ```
-            ${{ steps.get_commits.outputs.commits }}
-            ```
-            
-            ### ⚠️ Important: Review Before Merging
-            
-            1. **Check for conflicts** with AlamiaConnect customizations
-            2. **Test thoroughly** - upstream changes may affect custom features
-            3. **Review rebranding** - ensure Krayin references haven't been reintroduced
-            4. **Check image files** - verify logo/favicon weren't changed
-            5. **Update dependencies** if composer.json or package.json changed
-            
-            ### 🔍 Areas to Review Carefully
-            - Configuration files (.env, config/)
-            - Database migrations
-            - UI components (especially branding)
-            - API endpoints
-            - Dependencies (composer.json, package.json)
-            
-            ### ✅ After Review
-            - [ ] All conflicts resolved (if any)
-            - [ ] Tests passing
-            - [ ] Branding intact
-            - [ ] No Krayin references reintroduced
-            - [ ] Custom features still working
-            
-            ### 🚀 Merge Strategy
-            If this PR has conflicts:
-            1. Checkout the `${{ steps.push_branch.outputs.branch_name }}` branch locally
-            2. Resolve conflicts manually
-            3. Test thoroughly
-            4. Push changes back to this branch
-            5. Merge when ready
-            
-            If no conflicts:
-            1. Review changes carefully
-            2. Test in staging environment
-            3. Merge when confident
-            
-            ---
-            
-            **Generated by**: AlamiaConnect Upstream Sync Workflow  
-            **Schedule**: Weekly (every Monday)  
-            **Upstream**: [Krayin CRM](https://github.com/krayin/laravel-crm)
-          labels: upstream-sync, dependencies
-          draft: true  # Create as draft PR so you can review before marking ready
-          
-      - name: Comment if no changes
-        if: steps.check_changes.outputs.has_changes == 'false'
-        run: |
-          echo "✅ No new changes from Krayin upstream. AlamiaConnect is up to date!"
+          git push origin $BRANCH_NAME
+
+          gh pr create \
+            --title "⬆️ Sync with Krayin Upstream" \
+            --body "This PR merges changes from the upstream Krayin CRM repository. Please review and run tests before merging. breaking changes may be present." \
+            --base main \
+            --head $BRANCH_NAME \
+            --label "upstream-sync"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

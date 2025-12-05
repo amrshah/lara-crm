@@ -1,12 +1,12 @@
 {
-    "name": "krayin/laravel-crm",
+    "name": "alamiasoft/alamiaconnect-crm",
     "type": "project",
-    "description": "Krayin CRM",
+    "description": "AlamiaConnect CRM",
     "keywords": [
         "framework",
         "laravel"
     ],
-    "license": "MIT",
+    "license": "Proprietary",
     "require": {
         "php": "^8.2",
         "barryvdh/laravel-dompdf": "^2.0.0",

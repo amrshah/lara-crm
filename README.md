@@ -1,59 +1,32 @@
-<p align="center">
-<a href="http://krayincrm.com"><img src="https://bagisto.com/wp-content/uploads/2021/06/bagisto-logo.png" alt="Total Downloads"></a>
-</p>
+# AlamiaConnect CRM
 
-<p align="center">
-<a href="https://packagist.org/packages/krayin/laravel-crm"><img src="https://poser.pugx.org/krayin/laravel-crm/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/krayin/laravel-crm"><img src="https://poser.pugx.org/krayin/laravel-crm/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/krayin/laravel-crm"><img src="https://poser.pugx.org/krayin/laravel-crm/license.svg" alt="License"></a>
-</p>
-
-
-![enter image description here](https://raw.githubusercontent.com/krayin/temp-media/master/dashboard.png)
+AlamiaConnect CRM is a powerful Customer Relationship Management system based on Krayin CRM.
 
 ## Topics
 
 1. [Introduction](#introduction)
-2. [Documentation](#documentation)
-3. [Requirements](#requirements)
-4. [Installation & Configuration](#installation-and-configuration)
-4. [Docker Installation](https://devdocs.krayincrm.com/2.0/introduction/docker.html)
-5. [License](#license)
-6. [Security Vulnerabilities](#security-vulnerabilities)
+2. [Requirements](#requirements)
+3. [Installation & Configuration](#installation-and-configuration)
+4. [License](#license)
+5. [Attribution](#attribution)
 
 ### Introduction
 
-[Krayin CRM](https://krayincrm.com) is a hand tailored CRM framework built on some of the hottest opensource technologies
-such as [Laravel](https://laravel.com) (a [PHP](https://secure.php.net/) framework) and [Vue.js](https://vuejs.org)
-a progressive Javascript framework.
+AlamiaConnect CRM is built on top of [Krayin CRM](https://krayincrm.com), utilizing technologies such as [Laravel](https://laravel.com) and [Vue.js](https://vuejs.org).
 
-**Free & Opensource Laravel CRM solution for SMEs and Enterprises for complete customer lifecycle management.**
+**A complete customer lifecycle management solution.**
 
-**Read our documentation: [Krayin CRM Docs](https://devdocs.krayincrm.com/)**
-
-**We also have a forum for any type of concerns, feature requests, or discussions. Please visit: [Krayin CRM Forums](https://forums.krayincrm.com/)**
-
-# Visit our live [Demo](https://demo.krayincrm.com)
-
-<a href="javascript:void();">
-    <img class="flag-img" src="https://raw.githubusercontent.com/krayin/temp-media/master/visit-our-live-demo.png" alt="Chinese" width="100%">
-</a>
-
-It packs in lots of features that will allow your E-Commerce business to scale in no time:
+It packs in lots of features that will allow your business to scale in no time:
 
 -   Descriptive and Simple Admin Panel.
 -   Admin Dashboard.
 -   Custom Attributes.
 -   Built on Modular Approach.
 -   Email parsing via Sendgrid.
--   Check out [these features and more](https://krayincrm.com/features/).
-
-**For Developers**:
-Take advantage of two of the hottest frameworks used in this project -- Laravel and Vue.js -- both of which have been used in Krayin CRM.
 
 ### Documentation
 
-#### Krayin Documentation [https://devdocs.krayincrm.com](https://devdocs.krayincrm.com)
+For the underlying framework documentation, refer to [Krayin CRM Docs](https://devdocs.krayincrm.com).
 
 ### Requirements
 
@@ -130,8 +103,10 @@ password:admin123
 
 ### License
 
-Krayin CRM is a fully open-source CRM framework which will always be free under the [MIT License](https://github.com/krayin/laravel-crm/blob/2.1/LICENSE).
+AlamiaConnect CRM is licensed under a proprietary EULA. See `LICENSE` file for details.
+Krayin CRM components are licensed under the MIT License. See `NOTICE.third-party.txt` for details.
 
-### Security Vulnerabilities
+### Attribution
 
-Please don't disclose security vulnerabilities publicly. If you find any security vulnerability in Krayin CRM then please email us: sales@krayincrm.com.
+This project is a fork of [Krayin CRM](https://github.com/krayin/laravel-crm). We thank the Webkul team for their excellent work.
+See [docs/ATTRIBUTION.md](docs/ATTRIBUTION.md) for full details.
