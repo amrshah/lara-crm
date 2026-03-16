@@ -44,6 +44,8 @@ return [
         'import'          => 'استيراد',
         'event'           => 'حدث',
         'campaigns'       => 'الحملات',
+        'warehouses'      => 'المستودعات',
+        'inventory'       => 'المخزون',
     ],
     'users' => [
         'activate-warning' => 'حسابك لم يتم تفعيله بعد. يرجى الاتصال بالمسؤول.',
@@ -1013,14 +1015,15 @@ return [
         'marketing' => [
             'events' => [
                 'index' => [
-                    'create-btn'          => 'إنشاء حدث',
-                    'title'               => 'الأحداث',
-                    'create-success'      => 'تم إنشاء الحدث بنجاح.',
-                    'update-success'      => 'تم تحديث الحدث بنجاح.',
-                    'delete-success'      => 'تم حذف الحدث بنجاح.',
-                    'delete-failed'       => 'لا يمكن حذف الحدث.',
-                    'mass-delete-success' => 'تم حذف الأحداث بنجاح',
-                    'datagrid'            => [
+                    'create-btn'                         => 'إنشاء حدث',
+                    'title'                              => 'الأحداث',
+                    'create-success'                     => 'تم إنشاء الحدث بنجاح.',
+                    'update-success'                     => 'تم تحديث الحدث بنجاح.',
+                    'delete-success'                     => 'تم حذف الحدث بنجاح.',
+                    'delete-failed'                      => 'لا يمكن حذف الحدث.',
+                    'mass-delete-success'                => 'تم حذف الأحداث بنجاح',
+                    'delete-failed-associated-campaigns' => 'لا يمكن حذف الحدث لأنه مرتبط بحملات موجودة. يرجى إلغاء ربط أو تحديث تلك الحملات قبل الحذف.',
+                    'datagrid'                           => [
                         'delete'      => 'حذف',
                         'edit'        => 'تحرير',
                         'id'          => 'المعرف',
@@ -1673,11 +1676,15 @@ return [
                 'delete'        => 'حذف',
             ],
         ],
+
         'create-success'      => 'تم إرسال البريد الإلكتروني بنجاح.',
         'update-success'      => 'تم تحديث البريد الإلكتروني بنجاح.',
         'mass-update-success' => 'تم تحديث البريد الإلكتروني بنجاح.',
         'delete-success'      => 'تم حذف البريد الإلكتروني بنجاح.',
         'delete-failed'       => 'لا يمكن حذف البريد الإلكتروني.',
+        'invalid-route'       => 'مسار غير صالح للبريد.',
+        'unauthorized'        => 'هذا الإجراء غير مصرح به.',
+
         'view'                => [
             'title'                      => 'الرسائل',
             'subject'                    => ':الموضوع',
@@ -2026,8 +2033,10 @@ return [
     ],
     'dashboard' => [
         'index' => [
-            'title'   => 'لوحة القيادة',
-            'revenue' => [
+            'title'      => 'لوحة القيادة',
+            'start-date' => 'Start Date',
+            'end-date'   => 'End Date',
+            'revenue'    => [
                 'lost-revenue' => 'الإيرادات المفقودة',
                 'won-revenue'  => 'الإيرادات المكتسبة',
             ],
@@ -2143,6 +2152,8 @@ return [
         'warehouses'           => 'المستودعات',
         'warehouse'            => 'مستودع',
         'warehouses-info'      => 'إضافة أو تعديل أو حذف المستودعات من نظام CRM',
+        'inventory'            => 'المخزون',
+        'inventory-info'       => 'إدارة جميع إعدادات المخزون المتعلقة في نظام إدارة علاقات العملاء (CRM)',
         'data_transfer'        => 'نقل البيانات',
         'data_transfer_info'   => 'إدارة إعدادات نقل البيانات المتعلقة بالأشخاص والمنتجات والعملاء المحتملين في إدارة علاقات العملاء (CRM)',
     ],

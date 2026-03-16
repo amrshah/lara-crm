@@ -44,6 +44,8 @@ return [
         'import'          => 'Import',
         'event'           => 'Sự kiện',
         'campaigns'       => 'Chiến dịch',
+        'warehouses'      => 'Kho',
+        'inventory'       => 'Hàng tồn kho',
     ],
     'users' => [
         'activate-warning' => 'Tài khoản của bạn chưa được kích hoạt. Vui lòng liên hệ quản trị viên.',
@@ -1013,14 +1015,15 @@ return [
         'marketing' => [
             'events' => [
                 'index' => [
-                    'create-btn'          => 'Tạo Sự kiện',
-                    'title'               => 'Sự kiện',
-                    'create-success'      => 'Sự kiện đã được tạo thành công.',
-                    'update-success'      => 'Sự kiện đã được cập nhật thành công.',
-                    'delete-success'      => 'Sự kiện đã được xóa thành công.',
-                    'delete-failed'       => 'Không thể xóa sự kiện.',
-                    'mass-delete-success' => 'Các sự kiện đã được xóa thành công',
-                    'datagrid'            => [
+                    'create-btn'                         => 'Tạo Sự kiện',
+                    'title'                              => 'Sự kiện',
+                    'create-success'                     => 'Sự kiện đã được tạo thành công.',
+                    'update-success'                     => 'Sự kiện đã được cập nhật thành công.',
+                    'delete-success'                     => 'Sự kiện đã được xóa thành công.',
+                    'delete-failed'                      => 'Không thể xóa sự kiện.',
+                    'mass-delete-success'                => 'Các sự kiện đã được xóa thành công',
+                    'delete-failed-associated-campaigns' => 'Không thể xóa sự kiện vì nó đang được liên kết với các chiến dịch. Vui lòng hủy liên kết hoặc cập nhật các chiến dịch đó trước khi xóa.',
+                    'datagrid'                           => [
                         'delete'      => 'Xóa',
                         'edit'        => 'Chỉnh sửa',
                         'id'          => 'ID',
@@ -1673,11 +1676,15 @@ return [
                 'delete'        => 'Xóa',
             ],
         ],
+
         'create-success'      => 'Email đã được gửi thành công.',
         'update-success'      => 'Email đã được cập nhật thành công.',
         'mass-update-success' => 'Các email đã được cập nhật thành công.',
         'delete-success'      => 'Email đã được xóa thành công.',
         'delete-failed'       => 'Email không thể bị xóa.',
+        'invalid-route'       => 'Đường dẫn không hợp lệ cho email.',
+        'unauthorized'        => 'Hành động này không được phép.',
+
         'view'                => [
             'title'                      => 'Thư',
             'subject'                    => ':subject',
@@ -2026,8 +2033,10 @@ return [
     ],
     'dashboard' => [
         'index' => [
-            'title'   => 'Bảng Điều Khiển',
-            'revenue' => [
+            'title'      => 'Bảng Điều Khiển',
+            'start-date' => 'Start Date',
+            'end-date'   => 'End Date',
+            'revenue'    => [
                 'lost-revenue' => 'Doanh Thu Bị Mất',
                 'won-revenue'  => 'Doanh Thu Đã Đạt',
             ],
@@ -2143,6 +2152,8 @@ return [
         'warehouses'           => 'Kho hàng',
         'warehouse'            => 'Kho hàng',
         'warehouses-info'      => 'Thêm, chỉnh sửa hoặc xóa kho hàng từ CRM',
+        'inventory'            => 'Hàng tồn kho',
+        'inventory-info'       => 'Quản lý tất cả các cài đặt liên quan đến hàng tồn kho trong CRM',
         'data_transfer'        => 'Data Transfer',
         'data_transfer_info'   => 'Manage persons, products and leads data transfer related settings in the CRM',
     ],

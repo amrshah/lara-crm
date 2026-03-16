@@ -44,6 +44,8 @@ return [
         'import'          => 'وارد کردن',
         'event'           => 'رویداد',
         'campaigns'       => 'کمپین‌ها',
+        'warehouses'      => 'انبارها',
+        'inventory'       => 'موجودی',
     ],
     'users' => [
         'activate-warning' => 'حساب شما هنوز فعال نشده است. لطفاً با مدیر سیستم تماس بگیرید.',
@@ -1013,14 +1015,15 @@ return [
         'marketing' => [
             'events' => [
                 'index' => [
-                    'create-btn'          => 'ایجاد رویداد',
-                    'title'               => 'رویدادها',
-                    'create-success'      => 'رویداد با موفقیت ایجاد شد.',
-                    'update-success'      => 'رویداد با موفقیت به‌روزرسانی شد.',
-                    'delete-success'      => 'رویداد با موفقیت حذف شد.',
-                    'delete-failed'       => 'رویداد قابل حذف نیست.',
-                    'mass-delete-success' => 'رویدادها با موفقیت حذف شدند',
-                    'datagrid'            => [
+                    'create-btn'                         => 'ایجاد رویداد',
+                    'title'                              => 'رویدادها',
+                    'create-success'                     => 'رویداد با موفقیت ایجاد شد.',
+                    'update-success'                     => 'رویداد با موفقیت به‌روزرسانی شد.',
+                    'delete-success'                     => 'رویداد با موفقیت حذف شد.',
+                    'delete-failed'                      => 'رویداد قابل حذف نیست.',
+                    'mass-delete-success'                => 'رویدادها با موفقیت حذف شدند',
+                    'delete-failed-associated-campaigns' => 'رویداد قابل حذف نیست زیرا با کمپین‌های موجود مرتبط است. لطفاً ابتدا آن‌ها را جدا کرده یا به‌روزرسانی کنید.',
+                    'datagrid'                           => [
                         'delete'      => 'حذف',
                         'edit'        => 'ویرایش',
                         'id'          => 'شناسه',
@@ -1678,6 +1681,8 @@ return [
         'mass-update-success' => 'ایمیل‌ها با موفقیت به‌روزرسانی شدند.',
         'delete-success'      => 'ایمیل با موفقیت حذف شد.',
         'delete-failed'       => 'ایمیل قابل حذف نیست.',
+        'invalid-route'       => 'مسیر نامعتبر برای ایمیل.',
+        'unauthorized'        => 'این عمل مجاز نیست.',
         'view'                => [
             'title'                      => 'ایمیل‌ها',
             'subject'                    => ':subject',
@@ -2026,8 +2031,10 @@ return [
     ],
     'dashboard' => [
         'index' => [
-            'title'   => 'داشبورد',
-            'revenue' => [
+            'title'      => 'داشبورد',
+            'start-date' => 'Start Date',
+            'end-date'   => 'End Date',
+            'revenue'    => [
                 'lost-revenue' => 'درآمد از دست رفته',
                 'won-revenue'  => 'درآمد برنده',
             ],
@@ -2143,6 +2150,8 @@ return [
         'warehouses'           => 'انبارها',
         'warehouse'            => 'انبار',
         'warehouses-info'      => 'اضافه، ویرایش یا حذف انبارها از CRM',
+        'inventory'            => 'موجودی',
+        'inventory-info'       => 'مدیریت تمام تنظیمات مربوط به موجودی در CRM',
         'data_transfer'        => 'انتقال داده',
         'data_transfer_info'   => 'مدیریت تنظیمات مربوط به انتقال داده‌های اشخاص، محصولات و سرنخ‌ها در CRM',
     ],

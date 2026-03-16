@@ -1,5 +1,11 @@
 <p align="center">
-<a href="http://krayincrm.com"><img src="https://bagisto.com/wp-content/uploads/2021/06/bagisto-logo.png" alt="Total Downloads"></a>
+    <a href="https://krayincrm.com">
+        <picture>
+            <source media="(prefers-color-scheme: dark)" height="100" srcset="packages/Webkul/Admin/src/Resources/assets/images/dark-logo.svg">
+            <source media="(prefers-color-scheme: light)" height="100" srcset="packages/Webkul/Admin/src/Resources/assets/images/logo.svg">
+            <img alt="Krayin CRM" height="100" src="packages/Webkul/Admin/src/Resources/assets/images/logo.svg">
+        </picture>
+    </a>
 </p>
 
 <p align="center">
@@ -18,8 +24,9 @@
 3. [Requirements](#requirements)
 4. [Installation & Configuration](#installation-and-configuration)
 4. [Docker Installation](https://devdocs.krayincrm.com/2.0/introduction/docker.html)
-5. [License](#license)
-6. [Security Vulnerabilities](#security-vulnerabilities)
+5. [Krayin Cloud System](#krayin-cloud-system)
+6. [License](#license)
+7. [Security Vulnerabilities](#security-vulnerabilities)
 
 ### Introduction
 
@@ -110,6 +117,15 @@ php artisan serve
 email:admin@example.com
 password:admin123
 ```
+
+### Krayin Cloud Hosting
+
+[Krayin CRM Cloud Hosting](https://krayincrm.com/crm-cloud-hosting) is a fully managed hosting solution where our team sets up, secures, and configures your Krayin CRM on reliable infrastructure.
+
+Get a ready-to-use CRM on your own domain, without manual installation or infrastructure complexity, and focus on growing your business while we handle the technology.
+
+![Krayin CRM Cloud Hosting](https://raw.githubusercontent.com/krayin/temp-media/master/cloud_hosting.png)
+
 ### Krayin CRM Multi Tenant SaaS
 
 [Krayin CRM Multi Tenant SaaS](https://krayincrm.com/extensions/krayin-crm-multi-tenant-saas-extension/) Krayin Multitenant SaaS is a Laravel-based CRM solution that allows multiple businesses (tenants) to use a single application instance while keeping their data isolated and secure.
